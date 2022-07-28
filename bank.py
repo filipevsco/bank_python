@@ -4,7 +4,7 @@ from time import sleep
 from models.client import Client
 from models.account import Account
 
-contas = []
+accounts = []
 
 def main():
     menu()
@@ -44,7 +44,22 @@ def menu():
         print("Invalid option")
 
 def create_account():
-    pass
+    print('Enter client data:')
+    name = input("Client name: ")
+    email = input("Client email: ")
+    document = input("Client document: ")
+    date_of_birth = input("Client birth date: ")
+
+    client = Client(name, email, document, date_of_birth)
+    account = Account(client)
+
+    accounts.append(account)
+
+    print('Account created susccessfully')
+    print('Account info:')
+    sleep(2)
+    print(account)
+    menu()
 
 def withdraw():
     pass
