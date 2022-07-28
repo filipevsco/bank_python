@@ -94,13 +94,49 @@ def deposit():
         print("There aren't accounts")
 
 def trasnfer():
-    pass
+    if accounts:
+        id_by = int(input("Enter your account: "))
+        account_by = search_account_by_id(id_by)
+
+        if id_by:
+            id_to = int(input("Enter destiny account: "))
+            account_to = search_account_by_id(id_to)
+
+            if id_to:
+                value = int(input("Enter value to transfer: "))
+
+                account_by.transfer(account_to, value)
+                print("Transfer is done!")
+            else:
+                print("Destiny account not found")
+        else:
+            print("Origin account not found.")
+    else:
+        print("There aren't accounts")
+    sleep(2)
+    menu()
 
 def list_accounts():
-    pass
+    if accounts:
+        print("Accounts list")
+        print("=============")
 
-def search_account_by_id(id_account):
-    pass
+        for account in accounts:
+            print(account)
+            print("-----------------------")
+            sleep(1)
+
+    else:
+        print("There aren't accounts")
+
+def search_account_by_id(number):
+    result = None
+
+    if accounts:
+        for account in accounts:
+            if account.id_account == number:
+                result = account
+    return result
 
 if __name__ == '__main__':
     main()
