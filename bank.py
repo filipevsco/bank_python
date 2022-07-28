@@ -57,7 +57,7 @@ def create_account():
 
     print('Account created successfully')
     print('Account info:')
-    sleep(2)
+    sleep(1)
     print(account)
     menu()
 
@@ -70,12 +70,12 @@ def withdraw():
         if account:
             value = float(input("Enter withdraw value: "))
 
-            account.whithdraw(value)
+            account.withdraw(value)
         else:
             print(f"Account {id} not found")
     else:
         print("There aren't accounts")
-    sleep(2)
+    sleep(1)
     menu()
 
 def deposit():
@@ -92,6 +92,8 @@ def deposit():
 
     else:
         print("There aren't accounts")
+    sleep(1)
+    menu()
 
 def trasnfer():
     if accounts:
@@ -128,6 +130,8 @@ def list_accounts():
 
     else:
         print("There aren't accounts")
+    sleep(2)
+    menu()
 
 def search_account_by_id(number):
     result = None

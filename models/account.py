@@ -1,6 +1,7 @@
 from models.client import Client
 from utils.helper import format_float_for_real_currency
 
+
 class Account:
 
     id_account_counter = 2001
@@ -46,15 +47,49 @@ class Account:
     def total_balance(self):
         return self.__total_balance
 
+    @total_balance.setter
+    def total_balance(self, value):
+        self.__total_balance = value
+
     @property
     def _calc_total_balance(self):
         return self.balance + self.limit
 
     def deposit(self, value):
-        pass
+        if value:
+            self.balance = self.balance + value
+            self.total_balance = self._calc_total_balance
+            print("Deposit is done")
+        else:
+            print("Error")
 
     def withdraw(self, value):
-        pass
+        if value > 0 and self.total_balance >= value:
+            if self.balance >= value:
+                self.balance = self.balance - value
+                self.total_balance = self._calc_total_balance
+            else:
+                over = self.balance - value
+                self.limit = self.limit + over
+                self.balance = 0
+                self.total_balance = self._calc_total_balance
+                print("Withdraw is done!")
+        else:
+            print("Withdraw error. Try again")
 
     def transfer(self, to, value):
-        pass
+        if value > 0 and self.total_balance >= value:
+            if self.balance >= value:
+                self.balance = self.balance - value
+                self.total_balance = self._calc_total_balance
+                to.balance = to.balance + value
+                to.total_balance = to._calc_total_balance
+            else:
+                over = self.balance - value
+                self.balance = 0
+                self.limit = self.limit + over
+                self.total_balance = self._calc_total_balance
+                to.balance = to.balance + value
+                to.total_balance = to._calc_total_balance
+        else:
+            print("Transfer error. Try again")
