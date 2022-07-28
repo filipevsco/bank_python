@@ -3,15 +3,16 @@ from utils.helper import date_for_str, str_for_date
 
 
 class Client:
-    counter = 1
+    counter = 1001
 
-    def __int__(self, name, email, document, date_of_birth):
+    def __init__(self, name, email, document, date_of_birth):
         self.__id = Client.counter
         self.__name = name
         self.__email = email
         self.__document = document
         self.__date_of_birth = str_for_date(date_of_birth)
         self.__registration_date = date.today()
+
         Client.counter += 1
 
     @property

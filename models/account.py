@@ -5,7 +5,7 @@ class Account:
 
     id_account_counter = 2001
 
-    def __int__(self, client):
+    def __init__(self, client):
         self.__id_account = Account.id_account_counter
         self.__client = client
         self.__balance = 0.0
