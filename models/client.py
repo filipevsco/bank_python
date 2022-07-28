@@ -26,3 +26,18 @@ class Client:
     def email(self):
         return self.__email
 
+    @property
+    def document(self):
+        return self.__document
+
+    @property
+    def date_of_birth(self):
+        return date_for_str(self.__date_of_birth)
+
+    @property
+    def registration_date(self):
+        return date_for_str(self.__registration_date)
+
+    def __str__(self):
+        return f'Id: {self.id}\nNome: {self.name}\nemail: {self.email}\nDate of Birth: {self.date_of_birth}\n' \
+                f'Registration Date: {self.registration_date}'
