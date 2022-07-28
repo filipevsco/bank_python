@@ -55,17 +55,43 @@ def create_account():
 
     accounts.append(account)
 
-    print('Account created susccessfully')
+    print('Account created successfully')
     print('Account info:')
     sleep(2)
     print(account)
     menu()
 
 def withdraw():
-    pass
+    if accounts:
+        id = int(input("Enter account: "))
+
+        account = search_account_by_id(id)
+
+        if account:
+            value = float(input("Enter withdraw value: "))
+
+            account.whithdraw(value)
+        else:
+            print(f"Account {id} not found")
+    else:
+        print("There aren't accounts")
+    sleep(2)
+    menu()
 
 def deposit():
-    pass
+    if accounts:
+        id = int(input("Enter account for deposit: "))
+
+        account = search_account_by_id(id)
+
+        if account:
+            value = int(input("Enter value for deposit: "))
+            account.deposit(value)
+        else:
+            print("Account not found")
+
+    else:
+        print("There aren't accounts")
 
 def trasnfer():
     pass
